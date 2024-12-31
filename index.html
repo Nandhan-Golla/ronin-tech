@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ronin Tech</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Anurati&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: linear-gradient(135deg, #0F172A, #000000);
+            background-size: 400% 400%;
+            animation: gradientMove 3.5s ease infinite;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .welcome-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: fadeOut 3.5s ease-in-out forwards;
+        }
+
+        .welcome-screen h1 {
+            font-family: 'Anurati', sans-serif;
+            font-size: 4rem;
+            animation: zoomIn 3s ease;
+            color: #00ffcc;
+            text-shadow: 0 0 20px #00ffcc, 0 0 40px #00ffcc, 0 0 60px #00ffcc;
+            margin: 0;
+        }
+
+        .welcome-screen p {
+            font-size: 1.5rem;
+            margin-top: 10px;
+            color: #ffffff;
+            text-shadow: 0 0 10px #00ffcc;
+            animation: fadeIn 4s ease;
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        @keyframes zoomIn {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        header h1 {
+            font-family: 'Anurati', sans-serif;
+            font-size: 2.5rem;
+            color: #00ffcc;
+            margin: 0;
+            text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc;
+        }
+
+        header nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-size: 1rem;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        header nav a:hover {
+            transform: scale(1.1);
+            color: #00ffcc;
+        }
+
+        .hero {
+            height: 70vh;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin: 0;
+            text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc;
+            animation: slideIn 3s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-top: 15px;
+            animation: fadeIn 3s ease;
+        }
+
+        .hero .caption {
+            font-size: 1.5rem;
+            color: #00ffcc;
+            text-shadow: 0 0 10px #00ffcc;
+            animation: bounceIn 4s ease;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounceIn {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+        section {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .features .feature {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeIn 2s ease;
+        }
+
+        .features .feature:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px #00ffcc;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .founder-section {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 50px 20px;
+            color: white;
+            border-radius: 10px;
+            margin: 20px auto;
+            text-align: center;
+            max-width: 800px;
+            animation: fadeIn 2s ease;
+        }
+
+        .founder-section h2 {
+            color: #00ffcc;
+            margin-bottom: 10px;
+        }
+
+        .founder-section p {
+            font-size: 1.2rem;
+        }
+
+        .founder-section button {
+            background-color: #00ffcc;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .founder-section button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px #00ffcc;
+        }
+
+        footer {
+            background-color: rgba(15, 32, 39, 0.9);
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .contact-section {
+            text-align: center;
+            padding: 50px 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            margin: 20px auto;
+            max-width: 600px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .contact-section h3 {
+            color: #00ffcc;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-section a {
+            color: #00ffcc;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .contact-section a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-screen">
+        <h1>Welcome to Ronin Tech</h1>
+        <p>Your Gateway to Future Innovation</p>
+    </div>
+    <header>
+        <h1>Ronin Tech</h1>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#features">Features</a>
+            <a href="#team">Meet the Team</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    <div class="hero">
+        <div>
+            <h1>Revolutionize Your Workflow</h1>
+            <p class="caption">Empowering businesses with cutting-edge AI technology</p>
+        </div>
+    </div>
+    <section id="about">
+        <h2>About Us</h2>
+        <p>At Ronin Tech, we specialize in creating cutting-edge AI productivity tools to help businesses and individuals achieve their goals efficiently.
+ Join us on a journey to redefine productivity.</p>
+    </section>
+    <section id="features">
+        <h2>Features</h2>
+        <div class="features">
+            <div class="feature">
+                <h3>AI-Powered Automation</h3>
+                <p>Streamline your workflows with intelligent automation tools.</p>
+            </div>
+            <div class="feature">
+                <h3>Data Analytics</h3>
+                <p>Gain actionable insights with our advanced analytics systems.</p>
+            </div>
+            <div class="feature">
+                <h3>Custom Solutions</h3>
+                <p>Tailored AI solutions designed to meet unique business challenges.</p>
+            </div>
+            <div class="feature">
+                <h3>Real-Time Collaboration</h3>
+                <p>Enhance teamwork with cutting-edge collaborative AI tools.</p>
+            </div>
+            <div class="feature">
+                <h3>Scalability</h3>
+                <p>Seamless integration and growth with adaptable AI solutions.</p>
+            </div>
+        </div>
+    </section>
+    <section id="team">
+        <div class="founder-section">
+            <h2>Meet the Founder</h2>
+            <p>Nandhan Golla is the vision of a solo founder driven by passion and innovation. Dedicated to delivering state-of-the-art AI solutions, the founder is committed to reshaping productivity for businesses and individuals alike.</p>
+            <button onclick="window.open('https://linkedin.com/in/nandhan-golla-74901a31b', '_blank')">Connect on LinkedIn</button>
+        </div>
+    </section>
+    <section id="contact" class="contact-section">
+        <h3>Contact Us</h3>
+        <p>Email us at: <a href="mailto:nerd.revolutionary.network@gmail.com">nerd.revolutionary.network@gmail.com</a></p>
+    </section>
+    <footer>
+        <p>&copy; 2024 Ronin Tech. All rights reserved.</p>
+    </footer>
+</body>
+</html>
